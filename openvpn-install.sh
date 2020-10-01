@@ -652,7 +652,7 @@ function installOpenVPN() {
 			apt-get -y install ca-certificates gnupg
 			# We add the OpenVPN repo to get the latest version.
 			if [[ $VERSION_ID == "18.04" ]]; then
-				echo "deb http://build.openvpn.net/debian/openvpn/release/2.4 bionic main" >/etc/apt/sources.list.d/openvpn.list
+				echo "deb http://build.openvpn.net/debian/openvpn/stable bionic main" >/etc/apt/sources.list.d/openvpn.list
 				wget -O - https://swupdate.openvpn.net/repos/repo-public.gpg | apt-key add -
 				apt-get update
 			fi
@@ -690,7 +690,7 @@ function installOpenVPN() {
 
 	# Install the latest version of easy-rsa from source, if not already installed.
 	if [[ ! -d /etc/openvpn/easy-rsa/ ]]; then
-		local version="3.0.9"
+		local version="3.0.7"
 		wget -O ~/easy-rsa.tgz https://github.com/OpenVPN/easy-rsa/releases/download/v${version}/EasyRSA-${version}.tgz
 		mkdir -p /etc/openvpn/easy-rsa
 		tar xzf ~/easy-rsa.tgz --strip-components=1 --directory /etc/openvpn/easy-rsa
