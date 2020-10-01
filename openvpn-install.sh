@@ -651,8 +651,13 @@ function installOpenVPN() {
 			apt-get update
 			apt-get -y install ca-certificates gnupg
 			# We add the OpenVPN repo to get the latest version.
-			if [[ $VERSION_ID == "16.04" ]]; then
+			if [[ $VERSION_ID == "18.04" ]]; then
 				echo "deb http://build.openvpn.net/debian/openvpn/release/2.4 bionic main" >/etc/apt/sources.list.d/openvpn.list
+				wget -O - https://swupdate.openvpn.net/repos/repo-public.gpg | apt-key add -
+				apt-get update
+			fi
+			if [[ $VERSION_ID == "16.04" ]]; then
+				echo "deb http://build.openvpn.net/debian/openvpn/stable xenial main" >/etc/apt/sources.list.d/openvpn.list
 				wget -O - https://swupdate.openvpn.net/repos/repo-public.gpg | apt-key add -
 				apt-get update
 			fi
