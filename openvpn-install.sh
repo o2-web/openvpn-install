@@ -1062,9 +1062,9 @@ function newClient() {
 	echo "   1) Add a passwordless client"
 	echo "   2) Use a password for the client"
 
-	until [[ $PASS =~ ^[1-2]$ ]]; do
-		read -rp "Select an option [1-2]: " -e -i 1 PASS
-	done
+# 	until [[ $PASS =~ ^[1-2]$ ]]; do
+# 		read -rp "Select an option [1-2]: " -e -i 1 PASS
+# 	done
 
 	CLIENTEXISTS=$(tail -n +2 /etc/openvpn/easy-rsa/pki/index.txt | grep -c -E "/CN=$CLIENT\$")
 	if [[ $CLIENTEXISTS == '1' ]]; then
