@@ -1078,8 +1078,7 @@ function newClient() {
 			./easyrsa build-client-full "$CLIENT"
 			;;
 		*)
-			echo "$PASS" > "/root/${CLIENT}_pass.txt"
-			echo -e "$PASS\n$PASS" | ./easyrsa build-client-full "$CLIENT"
+			./easyrsa build-client-full "$CLIENT"
 			;;
 		esac
 		echo "Client $CLIENT added."
